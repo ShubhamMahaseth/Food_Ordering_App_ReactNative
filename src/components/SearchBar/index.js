@@ -24,7 +24,6 @@ const SearchBar = () => {
             backgroundColor: '#eee',
             borderRadius: 20,
             fontWeight: '700',
-
             color: 'black',
           },
           textInputContainer: {
@@ -32,7 +31,6 @@ const SearchBar = () => {
             borderRadius: 50,
             flexDirection: 'row',
             alignItems: 'center',
-            // marginRight: 10,
           },
         }}
         renderLeftButton={() => (

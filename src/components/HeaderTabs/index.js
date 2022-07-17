@@ -29,10 +29,9 @@ const HeaderButton = () => {
         <TouchableOpacity
           key={index}
           style={{
-            // borderWidth: 0,
             borderRadius: 20,
-            width: 130,
-            height: 45,
+            width: 120,
+            height: 40,
             justifyContent: 'center',
             alignItems: 'center',
             backgroundColor: item.backgroundColor,

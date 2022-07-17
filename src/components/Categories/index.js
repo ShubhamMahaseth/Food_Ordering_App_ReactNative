@@ -64,12 +64,19 @@ const Categories = () => {
     <View
       style={{
         flexDirection: 'row',
-        paddingTop: 10,
-        paddingBottom: 8,
+        paddingBottom: 6,
+        paddingTop: 6,
+        marginTop: 7,
+        marginBottom: 7,
+        backgroundColor: '#e5cccc',
+        opacity: 0.7,
+        elevation: 5,
+        borderRadius: 9,
       }}>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         {categoriesData.map((item, index) => (
           <TouchableOpacity
+            activeOpacity={0.5}
             key={index}
             style={{
               alignItems: 'center',
@@ -80,8 +87,8 @@ const Categories = () => {
             <Image
               source={item.image}
               style={{
-                width: 45,
-                height: 38,
+                width: 42,
+                height: 35,
                 resizeMode: 'contain',
               }}
             />
