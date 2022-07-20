@@ -36,7 +36,7 @@ const Tab = () => {
     {
       id: 5,
       tabName: 'Account',
-      iconName: 'homeuser',
+      iconName: 'user',
       iconColor: activeBottomTab == 'Account' ? 'black' : 'gray',
       textColor: activeBottomTab == 'Account' ? 'black' : 'gray',
     },

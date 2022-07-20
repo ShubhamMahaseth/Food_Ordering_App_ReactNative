@@ -1,21 +1,22 @@
 import React, {useState} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 
-const HeaderButton = () => {
+const HeaderButton = ({activeTab, setActiveTab}) => {
   const [activeButton, setActiveButton] = useState('Delivery');
-  console.log(activeButton);
+  // console.log(props);
+
   const data = [
     {
       id: 1,
       title: 'Delivery',
-      backgroundColor: activeButton == 'Delivery' ? 'black' : 'white',
-      textColor: activeButton == 'Delivery' ? 'white' : 'black',
+      backgroundColor: activeTab == 'Delivery' ? 'black' : 'white',
+      textColor: activeTab == 'Delivery' ? 'white' : 'black',
     },
     {
       id: 2,
       title: 'Pickup',
-      backgroundColor: activeButton == 'Pickup' ? 'black' : 'white',
-      textColor: activeButton == 'Pickup' ? 'white' : 'black',
+      backgroundColor: activeTab == 'Pickup' ? 'black' : 'white',
+      textColor: activeTab == 'Pickup' ? 'white' : 'black',
     },
   ];
   return (
@@ -37,7 +38,8 @@ const HeaderButton = () => {
             backgroundColor: item.backgroundColor,
           }}
           onPress={() => {
-            setActiveButton(item.title);
+            // setActiveButton(item.title);
+            setActiveTab(item.title);
           }}>
           <Text
             style={{
@@ -53,10 +55,11 @@ const HeaderButton = () => {
   );
 };
 
-const HeadersTabs = () => {
+const HeadersTabs = ({activeTab, setActiveTab}) => {
+  console.log(activeTab, setActiveTab);
   return (
     <View>
-      <HeaderButton />
+      <HeaderButton activeTab={activeTab} setActiveTab={setActiveTab} />
     </View>
   );
 };

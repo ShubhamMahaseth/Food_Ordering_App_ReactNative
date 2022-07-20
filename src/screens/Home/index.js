@@ -1,44 +1,90 @@
 import React, {useEffect, useState} from 'react';
-import {StatusBar, View, ScrollView, Button} from 'react-native';
+import {StatusBar, View, ScrollView, Animated} from 'react-native';
 import BottomTabs from '../../components/BottomTabs';
 import Categories from '../../components/Categories';
 import HeaderTabs from '../../components/HeaderTabs';
-import {RestaurantItem, restaurants} from '../../components/RestaurantItem.js';
-import SearchBar from '../../components/SearchBar';
+import {RestaurantItem, restaurants} from '../../components/RestaurantItem';
+import SearchBox from '../../components/SearchBox';
 
-const Home = () => {
+const YELP_API_KEY =
+  '_IXHxAN41Esb8_kyQU98od_NWVv9JXTUaY4iRQ3lmSN-sqGSKnaktZPqVog9m8q--qDYpb7qn8to9Ha-IMkfyz4yZi_8UO_eA93di7dwGfmGqfDO2shGKne6B5-hYnYx';
+
+const Home = ({navigation}) => {
   const [restaurantData, setRestaurantData] = useState(restaurants);
-  const YELP_API_KEY =
-    'bdRJutLhFAQJ36t7b89CWjHFBU4OKzjt9wvZzcY-nkgmvTqlNMjZWV1eG7iBQ9R74SyfxRg9LWnBAkZY06BtAZAe4d2dfX-2vuX8a1l5V7foctHfX9UKEyoM5ts3YXYx';
+  const [activeTab, setActiveTab] = useState('Delivery');
+  const [city, setCity] = useState('New York');
 
   const getRestaurantsFromYelp = () => {
-    const yelpUrl = `https://api.yelp.com/v3/businesses/search?term=restaurants&location=NewYork`;
+    const yelpUrl = `https://api.yelp.com/v3/businesses/search?term=restaurants&location=${city}`;
 
     const apiOptions = {
+      method: 'GET',
       headers: {
         Authorization: `Bearer ${YELP_API_KEY}`,
       },
     };
 
-    return fetch(yelpUrl, apiOptions).then(res => setRestaurantData(res));
-    // .then(json => setRestaurantData(json.data));
+    // console.log(city);
+
+    return fetch(yelpUrl, apiOptions)
+      .then(res => res.json())
+      .then(json =>
+        setRestaurantData(
+          json?.businesses?.filter(business =>
+            business?.transactions?.includes(activeTab.toLowerCase()),
+          ),
+        ),
+      );
   };
+
+  // console.log(restaurantData);
+  useEffect(() => {
+    getRestaurantsFromYelp();
+  }, [city, activeTab]);
+
+  const scrollY = new Animated.Value(0);
+  const diffClamp = Animated.diffClamp(scrollY, 0, 190);
+  const translateY = diffClamp.interpolate({
+    inputRange: [0, 45],
+    outputRange: [0, -45],
+  });
 
   return (
     <>
-      <StatusBar backgroundColor={'white'} hidden={false} currentHeight />
-      {/* <Button title="press" onPress={getRestaurantsFromYelp}></Button> */}
-      <View
-        style={{
-          paddingTop: 10,
-          flex: 1,
-          backgroundColor: 'white',
-          alignItems: 'center',
-        }}>
-        <HeaderTabs />
-        <SearchBar />
-        <Categories />
-        <RestaurantItem restaurantData={restaurantData} />
+      <StatusBar backgroundColor="white" currentHeight />
+      <View style={{flex: 1, backgroundColor: 'white'}}>
+        <Animated.View
+          style={{
+            transform: [{translateY: translateY}],
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            elevation: 1000,
+            zIndex: 1000,
+            backgroundColor: 'white',
+            paddingTop: 12,
+            alignItems: 'center',
+          }}>
+          <HeaderTabs activeTab={activeTab} setActiveTab={setActiveTab} />
+          <SearchBox cityHandler={setCity} />
+
+          <Categories />
+        </Animated.View>
+        <ScrollView
+          bounces={false}
+          contentContainerStyle={{
+            backgroundColor: 'white',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+          onScroll={e => scrollY.setValue(e.nativeEvent.contentOffset.y)}>
+          <RestaurantItem
+            restaurantData={restaurantData}
+            navigation={navigation}
+          />
+        </ScrollView>
+
         <BottomTabs />
       </View>
     </>

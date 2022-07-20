@@ -1,6 +1,8 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, Image, ScrollView} from 'react-native';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 export const restaurants = [
   {
@@ -33,26 +35,33 @@ export const restaurants = [
 ];
 
 export const RestaurantItem = props => {
-  console.log(props);
+  // console.log('====================>', props.restaurantData?.businesses?.alias);
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
-      {props?.restaurantData?.map((item, index) => (
+    <View style={{marginTop: 178}}>
+      {props.restaurantData?.map((item, index) => (
         <TouchableOpacity
           activeOpacity={0.8}
           key={index}
           style={{
             height: 250,
             elevation: 3,
-
-            // borderWidth: 0,
             marginTop: 0,
             marginBottom: 7,
             minWidth: '96%',
-            // justifyContent: 'flex-start',
             borderRadius: 10,
             backgroundColor: 'white',
-          }}>
+          }}
+          onPress={() =>
+            props.navigation.navigate('RestaurantDetails', {
+              image_URL: item.image_url,
+              name: item.name,
+              review: item.review_count,
+              rating: item.rating,
+              price: item.price,
+              categories: item.categories,
+            })
+          }>
           <Image
             style={{
               width: '100%',
@@ -94,6 +103,6 @@ export const RestaurantItem = props => {
           </View>
         </TouchableOpacity>
       ))}
-    </ScrollView>
+    </View>
   );
 };
