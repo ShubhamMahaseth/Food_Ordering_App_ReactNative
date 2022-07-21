@@ -33,11 +33,50 @@ const MenuItem = () => {
     },
     {
       title: 'Chicken Caesar Salad',
-      description:
-        'One can never go wrong with a chicken caesar salad. Healthy option with greens and proteins!',
+      description: 'One can never go wrong with a chicken caesar salad.',
       price: '$21.50',
       image:
         'https://images.themodernproper.com/billowy-turkey/production/posts/2019/Easy-italian-salad-recipe-10.jpg?w=1200&h=1200&q=82&fm=jpg&fit=crop&fp-x=0.5&fp-y=0.5&dm=1614096227&s=c0f63a30cef3334d97f9ecad14be51da',
+      box: false,
+    },
+    {
+      title: 'Lasagna',
+      description: 'With butter lettuce, tomato and sauce bechamel',
+      price: '$13.50',
+      image:
+        'https://thestayathomechef.com/wp-content/uploads/2017/08/Most-Amazing-Lasagna-2-e1574792735811.jpg',
+      box: false,
+    },
+    {
+      title: 'Lasagna',
+      description: 'With butter lettuce, tomato and sauce bechamel',
+      price: '$13.50',
+      image:
+        'https://thestayathomechef.com/wp-content/uploads/2017/08/Most-Amazing-Lasagna-2-e1574792735811.jpg',
+      box: false,
+    },
+    {
+      title: 'Lasagna',
+      description: 'With butter lettuce, tomato and sauce bechamel',
+      price: '$13.50',
+      image:
+        'https://thestayathomechef.com/wp-content/uploads/2017/08/Most-Amazing-Lasagna-2-e1574792735811.jpg',
+      box: false,
+    },
+    {
+      title: 'Lasagna',
+      description: 'With butter lettuce, tomato and sauce bechamel',
+      price: '$13.50',
+      image:
+        'https://thestayathomechef.com/wp-content/uploads/2017/08/Most-Amazing-Lasagna-2-e1574792735811.jpg',
+      box: false,
+    },
+    {
+      title: 'Lasagna',
+      description: 'With butter lettuce, tomato and sauce bechamel',
+      price: '$13.50',
+      image:
+        'https://thestayathomechef.com/wp-content/uploads/2017/08/Most-Amazing-Lasagna-2-e1574792735811.jpg',
       box: false,
     },
     {
@@ -63,7 +102,7 @@ const MenuItem = () => {
             maxHeight: 130,
             width: '100%',
             alignItems: 'center',
-            justifyContent: 'space-evenly',
+            justifyContent: 'space-around',
             overflow: 'hidden',
             elevation: 3,
             flexDirection: 'row-reverse',
@@ -71,12 +110,9 @@ const MenuItem = () => {
           key={index}>
           <View
             style={{
-              alignItems: 'center',
-              justifyContent: 'center',
-              // borderWidth: 1,
               width: '22%',
               height: '80%',
-              // borderRadius: 10,
+
               marginRight: 10,
             }}>
             <Image
@@ -84,20 +120,16 @@ const MenuItem = () => {
                 width: '100%',
                 height: '100%',
                 borderRadius: 10,
-                // borderTopLeftRadius: 10,
-                // borderTopRightRadius: 10,
               }}
               source={{uri: item.image}}
             />
           </View>
           <View
             style={{
-              // justifyContent: 'center',
-              // alignItems: 'center',
               borderWidth: 1,
               borderColor: 'transparent',
-              marginLeft: 0,
-              marginRight: 0,
+
+              marginRight: 10,
               width: '60%',
             }}>
             <Text style={{color: 'black', fontWeight: 'bold', fontSize: 20}}>
@@ -107,7 +139,13 @@ const MenuItem = () => {
             <Text style={{color: 'black', fontWeight: '400', fontSize: 15}}>
               {item.description}
             </Text>
-            <Text style={{color: 'black', fontWeight: '400', fontSize: 15}}>
+            <Text
+              style={{
+                color: 'black',
+                fontWeight: '500',
+                fontSize: 15,
+                marginTop: 5,
+              }}>
               {item.price}
             </Text>
           </View>
