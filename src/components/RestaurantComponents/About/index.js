@@ -31,9 +31,8 @@ const About = props => {
           elevation: 3,
           marginTop: 0,
           width: '100%',
-          backgroundColor: 'white',
+          backgroundColor: '#f7f7f7',
           overflow: 'hidden',
-
           borderColor: 'gray',
           elevation: 4,
         }}>

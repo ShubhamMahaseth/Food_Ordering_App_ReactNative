@@ -63,7 +63,7 @@ const Home = ({navigation}) => {
             elevation: 1000,
             zIndex: 1000,
             backgroundColor: 'white',
-            paddingTop: 12,
+            paddingTop: 45,
             alignItems: 'center',
           }}>
           <HeaderTabs activeTab={activeTab} setActiveTab={setActiveTab} />
