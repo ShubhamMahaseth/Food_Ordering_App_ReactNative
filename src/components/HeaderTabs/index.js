@@ -1,9 +1,12 @@
-import React, {useState} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import React, {useState, useContext} from 'react';
+import {View, Text, TouchableOpacity, Button} from 'react-native';
+import {AuthContext, AuthProvider} from '../../navigation/AuthProvider';
 
 const HeaderButton = ({activeTab, setActiveTab}) => {
   const [activeButton, setActiveButton] = useState('Delivery');
   // console.log(props);
+
+  const {logout} = useContext(AuthContext);
 
   const data = [
     {

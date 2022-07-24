@@ -9,7 +9,7 @@ import SearchBox from '../../components/SearchBox';
 const YELP_API_KEY =
   '_IXHxAN41Esb8_kyQU98od_NWVv9JXTUaY4iRQ3lmSN-sqGSKnaktZPqVog9m8q--qDYpb7qn8to9Ha-IMkfyz4yZi_8UO_eA93di7dwGfmGqfDO2shGKne6B5-hYnYx';
 
-const Home = ({navigation}) => {
+export const Home = ({navigation}) => {
   const [restaurantData, setRestaurantData] = useState(restaurants);
   const [activeTab, setActiveTab] = useState('Delivery');
   const [city, setCity] = useState('New York');
@@ -37,7 +37,6 @@ const Home = ({navigation}) => {
       );
   };
 
-  // console.log(restaurantData);
   useEffect(() => {
     getRestaurantsFromYelp();
   }, [city, activeTab]);
@@ -63,7 +62,7 @@ const Home = ({navigation}) => {
             elevation: 1000,
             zIndex: 1000,
             backgroundColor: 'white',
-            paddingTop: 45,
+            paddingTop: 12,
             alignItems: 'center',
           }}>
           <HeaderTabs activeTab={activeTab} setActiveTab={setActiveTab} />
@@ -85,7 +84,7 @@ const Home = ({navigation}) => {
           />
         </ScrollView>
 
-        <BottomTabs />
+        <BottomTabs navigation={navigation} />
       </View>
     </>
   );

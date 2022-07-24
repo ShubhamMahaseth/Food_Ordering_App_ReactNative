@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {
   View,
   Text,
@@ -11,12 +11,15 @@ import {Formik} from 'formik';
 import * as yup from 'yup';
 import Validator from 'email-validator';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {AuthContext} from '../../navigation/AuthProvider';
 
 const SignupForm = ({navigation}) => {
   const [text, setText] = useState('');
 
   const [icon, setIcon] = useState('eye-off-outline');
   const [hide, setHide] = useState(true);
+
+  const {register} = useContext(AuthContext);
 
   const signupValidation = yup.object().shape({
     email: yup
@@ -159,7 +162,7 @@ const SignupForm = ({navigation}) => {
                   marginTop: 30,
                 }}
                 onPress={() => {
-                  handleSubmit, navigation.navigate('Home');
+                  register(values.email, values.password);
                 }}
                 activeOpacity={0.8}>
                 <Text style={{color: 'white', fontSize: 20, fontWeight: '500'}}>

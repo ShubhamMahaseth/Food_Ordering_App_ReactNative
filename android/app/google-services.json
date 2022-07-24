@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1082222592013",
+    "project_id": "composed-setup-356709",
+    "storage_bucket": "composed-setup-356709.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1082222592013:android:7f4106deb4ceea7b689544",
+        "android_client_info": {
+          "package_name": "com.food_ordering_app_reactnative"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1082222592013-lo37viangft4iulsgfapivm9geqt86hm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVZRy9_JLwaJZruv3tcgu6_g_1XW91b4s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1082222592013-lo37viangft4iulsgfapivm9geqt86hm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

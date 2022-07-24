@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {
   View,
   Text,
@@ -6,19 +6,18 @@ import {
   TextInput,
   TouchableOpacity,
   StatusBar,
-  Alert,
 } from 'react-native';
+import {AuthContext} from '../../navigation/AuthProvider';
 import {Formik} from 'formik';
 import * as yup from 'yup';
 import Validator from 'email-validator';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import firebase from '../../../firebase';
 
 const LoginForm = ({navigation}) => {
-  const [text, setText] = useState('');
-
   const [icon, setIcon] = useState('eye-off-outline');
   const [hide, setHide] = useState(true);
+
+  const {login} = useContext(AuthContext);
 
   const loginValidation = yup.object().shape({
     email: yup
@@ -31,14 +30,6 @@ const LoginForm = ({navigation}) => {
       .required('Password is required'),
   });
 
-  const onLogin = async (email, password) => {
-    try {
-      await firebase.auth().signInwithEmailAndPassword(email, password);
-      console.log('Login Successfully', email, password);
-    } catch (error) {
-      Alert.alert(error.message);
-    }
-  };
   return (
     <>
       <StatusBar backgroundColor={'transparent'} translucent={true} />
@@ -47,7 +38,7 @@ const LoginForm = ({navigation}) => {
         validateOnMount={true}
         validationSchema={loginValidation}
         onSubmit={values => {
-          onLogin(values.email, values.password);
+          console.log(values);
         }}>
         {({handleChange, handleBlur, handleSubmit, values, isValid}) => (
           <>
@@ -163,7 +154,7 @@ const LoginForm = ({navigation}) => {
                   marginTop: 30,
                 }}
                 onPress={() => {
-                  handleSubmit, navigation.navigate('Home');
+                  login(values.email, values.password);
                 }}
                 activeOpacity={0.8}>
                 <Text style={{color: 'white', fontSize: 20, fontWeight: '500'}}>

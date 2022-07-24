@@ -1,8 +1,6 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, Image, ScrollView} from 'react-native';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 export const restaurants = [
   {
@@ -35,8 +33,6 @@ export const restaurants = [
 ];
 
 export const RestaurantItem = props => {
-  // console.log('====================>', props.restaurantData?.businesses?.alias);
-
   return (
     <View style={{marginTop: 178}}>
       {props.restaurantData?.map((item, index) => (

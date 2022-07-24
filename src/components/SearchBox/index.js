@@ -6,11 +6,11 @@ import {SearchBar} from 'react-native-elements';
 
 const SearchBox = ({cityHandler}) => {
   const [search, setSearch] = useState('');
+  cityHandler(search);
   const updateSearch = searchKey => {
     setSearch(searchKey);
   };
 
-  cityHandler(search);
   return (
     <View
       style={{
