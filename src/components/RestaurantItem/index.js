@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, Image, ScrollView} from 'react-native';
+import {View, Text, TouchableOpacity, Image} from 'react-native';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 
 export const restaurants = [

@@ -8,7 +8,9 @@ const Stack = createNativeStackNavigator();
 
 const AppStack = () => {
   return (
-    <Stack.Navigator initialRouteName="Home">
+    <Stack.Navigator
+      initialRouteName="Home"
+      screenOptions={{gestureEnabled: true}}>
       <Stack.Screen
         name="Home"
         component={Home}

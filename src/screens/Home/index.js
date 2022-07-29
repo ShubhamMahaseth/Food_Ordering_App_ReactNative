@@ -24,8 +24,6 @@ export const Home = ({navigation}) => {
       },
     };
 
-    // console.log(city);
-
     return fetch(yelpUrl, apiOptions)
       .then(res => res.json())
       .then(json =>
