@@ -3,7 +3,16 @@ import {View, Text, Image, ScrollView, TouchableOpacity} from 'react-native';
 import {CheckBox} from 'react-native-elements';
 
 const MenuItem = () => {
-  const [box, setBox] = useState(false);
+  const [check1, setCheck1] = useState(false);
+  const [check2, setCheck2] = useState(false);
+  const [check3, setCheck3] = useState(false);
+  const [check4, setCheck4] = useState(false);
+  const [check5, setCheck5] = useState(false);
+  const [check6, setCheck6] = useState(false);
+  const [check7, setCheck7] = useState(false);
+  const [check8, setCheck8] = useState(false);
+  const [check9, setCheck9] = useState(false);
+  const [check10, setCheck10] = useState(false);
 
   const food = [
     {
@@ -12,7 +21,8 @@ const MenuItem = () => {
       price: '$13.50',
       image:
         'https://www.modernhoney.com/wp-content/uploads/2019/08/Classic-Lasagna-14-scaled.jpg',
-      box: false,
+      check: check1,
+      setCheck: setCheck1,
     },
     {
       title: 'Tandoori Chicken',
@@ -20,7 +30,8 @@ const MenuItem = () => {
         'Amazing Indian dish with tenderloin chicken off the sizzles 🔥',
       price: '$19.20',
       image: 'https://i.ytimg.com/vi/BKxGodX9NGg/maxresdefault.jpg',
-      box: false,
+      check: check2,
+      setCheck: setCheck2,
     },
     {
       title: 'Chilaquiles',
@@ -29,7 +40,8 @@ const MenuItem = () => {
       price: '$14.50',
       image:
         'https://i2.wp.com/chilipeppermadness.com/wp-content/uploads/2020/11/Chilaquales-Recipe-Chilaquiles-Rojos-1.jpg',
-      box: false,
+      check: check3,
+      setCheck: setCheck3,
     },
     {
       title: 'Chicken Caesar Salad',
@@ -37,7 +49,8 @@ const MenuItem = () => {
       price: '$21.50',
       image:
         'https://images.themodernproper.com/billowy-turkey/production/posts/2019/Easy-italian-salad-recipe-10.jpg?w=1200&h=1200&q=82&fm=jpg&fit=crop&fp-x=0.5&fp-y=0.5&dm=1614096227&s=c0f63a30cef3334d97f9ecad14be51da',
-      box: false,
+      check: check4,
+      setCheck: setCheck4,
     },
     {
       title: 'Lasagna',
@@ -45,7 +58,8 @@ const MenuItem = () => {
       price: '$13.50',
       image:
         'https://thestayathomechef.com/wp-content/uploads/2017/08/Most-Amazing-Lasagna-2-e1574792735811.jpg',
-      box: false,
+      check: check5,
+      setCheck: setCheck5,
     },
     {
       title: 'Lasagna',
@@ -53,7 +67,8 @@ const MenuItem = () => {
       price: '$13.50',
       image:
         'https://thestayathomechef.com/wp-content/uploads/2017/08/Most-Amazing-Lasagna-2-e1574792735811.jpg',
-      box: false,
+      check: check6,
+      setCheck: setCheck6,
     },
     {
       title: 'Lasagna',
@@ -61,7 +76,8 @@ const MenuItem = () => {
       price: '$13.50',
       image:
         'https://thestayathomechef.com/wp-content/uploads/2017/08/Most-Amazing-Lasagna-2-e1574792735811.jpg',
-      box: false,
+      check: check7,
+      setCheck: setCheck7,
     },
     {
       title: 'Lasagna',
@@ -69,7 +85,8 @@ const MenuItem = () => {
       price: '$13.50',
       image:
         'https://thestayathomechef.com/wp-content/uploads/2017/08/Most-Amazing-Lasagna-2-e1574792735811.jpg',
-      box: false,
+      check: check8,
+      setCheck: setCheck8,
     },
     {
       title: 'Lasagna',
@@ -77,7 +94,8 @@ const MenuItem = () => {
       price: '$13.50',
       image:
         'https://thestayathomechef.com/wp-content/uploads/2017/08/Most-Amazing-Lasagna-2-e1574792735811.jpg',
-      box: false,
+      check: check9,
+      setCheck: setCheck9,
     },
     {
       title: 'Lasagna',
@@ -85,7 +103,8 @@ const MenuItem = () => {
       price: '$13.50',
       image:
         'https://thestayathomechef.com/wp-content/uploads/2017/08/Most-Amazing-Lasagna-2-e1574792735811.jpg',
-      box: false,
+      check: check10,
+      setCheck: setCheck10,
     },
   ];
   return (
@@ -150,9 +169,9 @@ const MenuItem = () => {
             </Text>
           </View>
           <CheckBox
-            checked={item.box}
+            checked={item.check}
             checkedColor={'green'}
-            onPress={() => setBox(box ? false : true)}
+            onPress={() => item.setCheck(item.check == true ? false : true)}
           />
         </TouchableOpacity>
       ))}
