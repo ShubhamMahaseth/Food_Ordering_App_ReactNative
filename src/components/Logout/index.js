@@ -1,18 +1,11 @@
-import React, {useContext, useReducer} from 'react';
+import React, {useContext} from 'react';
 import {View, Text, Button} from 'react-native';
 import {AuthContext} from '../../navigation/AuthProvider';
 
 const Logout = () => {
-  const reducer = function (state, action) {
-    switch (action.type) {
-      case 'ADD':
-        return state + 1;
-      case 'SUB':
-        return state - 1;
-    }
-  };
   const {logout} = useContext(AuthContext);
-  const [state, dispatch] = useReducer(reducer, 0);
+  const state = 0;
+
   return (
     <View style={{justifyContent: 'center', alignItems: 'center'}}>
       <Button
@@ -25,7 +18,7 @@ const Logout = () => {
         <Button
           title="ADD"
           onPress={() => {
-            dispatch({type: 'ADD'});
+            console.log('ADD');
           }}
         />
         <View
@@ -40,7 +33,7 @@ const Logout = () => {
           }}>
           <Text style={{color: 'black'}}>{state}</Text>
         </View>
-        <Button title="SUB" onPress={() => dispatch({type: 'SUB'})} />
+        <Button title="SUB" onPress={() => console.log('SUB')} />
       </View>
     </View>
   );
