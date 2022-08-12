@@ -4,7 +4,6 @@ import {AuthContext, AuthProvider} from '../../navigation/AuthProvider';
 
 const HeaderButton = ({activeTab, setActiveTab}) => {
   const [activeButton, setActiveButton] = useState('Delivery');
-  // console.log(props);
 
   const {logout} = useContext(AuthContext);
 

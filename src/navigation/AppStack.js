@@ -3,30 +3,34 @@ import Home from '../screens/Home';
 import RestaurantDetails from '../screens/RestaurantDetails';
 import LogoutScreen from '../screens/LogoutScreen';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {Provider} from 'react-redux';
+import store from '../redux/store/store';
 
 const Stack = createNativeStackNavigator();
 
 const AppStack = () => {
   return (
-    <Stack.Navigator
-      initialRouteName="Home"
-      screenOptions={{gestureEnabled: true}}>
-      <Stack.Screen
-        name="Home"
-        component={Home}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="RestaurantDetails"
-        component={RestaurantDetails}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="LogoutScreen"
-        component={LogoutScreen}
-        options={{headerShown: true}}
-      />
-    </Stack.Navigator>
+    <Provider store={store}>
+      <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={{gestureEnabled: true}}>
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="RestaurantDetails"
+          component={RestaurantDetails}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="LogoutScreen"
+          component={LogoutScreen}
+          options={{headerShown: true}}
+        />
+      </Stack.Navigator>
+    </Provider>
   );
 };
 

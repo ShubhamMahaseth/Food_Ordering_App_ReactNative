@@ -1,110 +1,103 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {View, Text, Image, ScrollView, TouchableOpacity} from 'react-native';
 import {CheckBox} from 'react-native-elements';
+import {increment, decrement} from '../../../redux/cartSlice/cartSlice';
+import {useDispatch, useSelector} from 'react-redux';
 
 const MenuItem = () => {
-  const [check1, setCheck1] = useState(false);
-  const [check2, setCheck2] = useState(false);
-  const [check3, setCheck3] = useState(false);
-  const [check4, setCheck4] = useState(false);
-  const [check5, setCheck5] = useState(false);
-  const [check6, setCheck6] = useState(false);
-  const [check7, setCheck7] = useState(false);
-  const [check8, setCheck8] = useState(false);
-  const [check9, setCheck9] = useState(false);
-  const [check10, setCheck10] = useState(false);
+  const valueSelector = useSelector(
+    state => state.cartSlice.selectedItems.restaurantName,
+  );
+
+  function checkTick(valueSelector, title) {
+    for (let i = 0; i < valueSelector.length; i++) {
+      if (valueSelector[i] == title) {
+        return true;
+      }
+    }
+  }
+
+  const dispatch = useDispatch();
+
+  function checkOnpress(item) {
+    if (valueSelector.includes(item.title)) {
+      dispatch(decrement(item));
+    } else {
+      dispatch(increment(item));
+    }
+  }
 
   const food = [
     {
       title: 'Lasagna',
       description: 'With butter lettuce, tomato and sauce bechamel',
-      price: '$13.50',
+      price: 19.5,
       image:
         'https://www.modernhoney.com/wp-content/uploads/2019/08/Classic-Lasagna-14-scaled.jpg',
-      check: check1,
-      setCheck: setCheck1,
     },
     {
       title: 'Tandoori Chicken',
       description:
         'Amazing Indian dish with tenderloin chicken off the sizzles 🔥',
-      price: '$19.20',
+      price: 19.2,
       image: 'https://i.ytimg.com/vi/BKxGodX9NGg/maxresdefault.jpg',
-      check: check2,
-      setCheck: setCheck2,
     },
     {
       title: 'Chilaquiles',
       description:
         'Chilaquiles with cheese and sauce. A delicious mexican dish 🇲🇽',
-      price: '$14.50',
+      price: 14.5,
       image:
         'https://i2.wp.com/chilipeppermadness.com/wp-content/uploads/2020/11/Chilaquales-Recipe-Chilaquiles-Rojos-1.jpg',
-      check: check3,
-      setCheck: setCheck3,
     },
     {
       title: 'Chicken Caesar Salad',
       description: 'One can never go wrong with a chicken caesar salad.',
-      price: '$21.50',
+      price: 21.5,
       image:
         'https://images.themodernproper.com/billowy-turkey/production/posts/2019/Easy-italian-salad-recipe-10.jpg?w=1200&h=1200&q=82&fm=jpg&fit=crop&fp-x=0.5&fp-y=0.5&dm=1614096227&s=c0f63a30cef3334d97f9ecad14be51da',
-      check: check4,
-      setCheck: setCheck4,
     },
     {
-      title: 'Lasagna',
+      title: 'Panner Tika',
       description: 'With butter lettuce, tomato and sauce bechamel',
-      price: '$13.50',
+      price: 13.5,
       image:
         'https://thestayathomechef.com/wp-content/uploads/2017/08/Most-Amazing-Lasagna-2-e1574792735811.jpg',
-      check: check5,
-      setCheck: setCheck5,
     },
     {
-      title: 'Lasagna',
+      title: 'Mushroom',
       description: 'With butter lettuce, tomato and sauce bechamel',
-      price: '$13.50',
+      price: 33.5,
       image:
         'https://thestayathomechef.com/wp-content/uploads/2017/08/Most-Amazing-Lasagna-2-e1574792735811.jpg',
-      check: check6,
-      setCheck: setCheck6,
     },
     {
-      title: 'Lasagna',
+      title: 'Crispy Chilli Baby Corn',
       description: 'With butter lettuce, tomato and sauce bechamel',
-      price: '$13.50',
+      price: 53.5,
       image:
         'https://thestayathomechef.com/wp-content/uploads/2017/08/Most-Amazing-Lasagna-2-e1574792735811.jpg',
-      check: check7,
-      setCheck: setCheck7,
     },
     {
-      title: 'Lasagna',
+      title: 'Dosa',
       description: 'With butter lettuce, tomato and sauce bechamel',
-      price: '$13.50',
+      price: 213.5,
       image:
         'https://thestayathomechef.com/wp-content/uploads/2017/08/Most-Amazing-Lasagna-2-e1574792735811.jpg',
-      check: check8,
-      setCheck: setCheck8,
     },
     {
-      title: 'Lasagna',
+      title: 'Idli',
       description: 'With butter lettuce, tomato and sauce bechamel',
-      price: '$13.50',
+      price: 73.5,
       image:
         'https://thestayathomechef.com/wp-content/uploads/2017/08/Most-Amazing-Lasagna-2-e1574792735811.jpg',
-      check: check9,
-      setCheck: setCheck9,
     },
     {
-      title: 'Lasagna',
+      title: 'Soup',
       description: 'With butter lettuce, tomato and sauce bechamel',
-      price: '$13.50',
+      price: 9.5,
       image:
         'https://thestayathomechef.com/wp-content/uploads/2017/08/Most-Amazing-Lasagna-2-e1574792735811.jpg',
-      check: check10,
-      setCheck: setCheck10,
     },
   ];
   return (
@@ -116,7 +109,7 @@ const MenuItem = () => {
             borderBottomWidth: 0.2,
             borderTopWidth: 0.3,
             borderColor: 'gray',
-            // borderRadius: 10,
+
             backgroundColor: 'white',
             maxHeight: 130,
             width: '100%',
@@ -165,13 +158,15 @@ const MenuItem = () => {
                 fontSize: 15,
                 marginTop: 5,
               }}>
-              {item.price}
+              ${item.price}
             </Text>
           </View>
           <CheckBox
-            checked={item.check}
+            checked={checkTick(valueSelector, item.title)}
             checkedColor={'green'}
-            onPress={() => item.setCheck(item.check == true ? false : true)}
+            onPress={() => {
+              checkOnpress(item);
+            }}
           />
         </TouchableOpacity>
       ))}

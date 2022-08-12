@@ -5,7 +5,6 @@ import About from '../../components/RestaurantComponents/About';
 import CheckoutButton from '../../components/RestaurantComponents/CheckoutButton';
 
 const RestaurantDetails = navigation => {
-  // console.log('))))))))', navigation.route.params);
   return (
     <View
       style={{

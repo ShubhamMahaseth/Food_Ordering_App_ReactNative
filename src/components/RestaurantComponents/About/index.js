@@ -15,8 +15,6 @@ const About = props => {
     })
     .join(' • ');
 
-  // console.log(mappedCategories);
-
   const description = (reviewData, rating, price, mappedCategories) => {
     return `${mappedCategories} • ${price} • 🎫 • ${rating} ⭐ (${reviewData}+)`;
   };

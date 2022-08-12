@@ -12,7 +12,7 @@ const Tab = ({navigation}) => {
       iconColor: activeBottomTab == 'Home' ? 'black' : 'gray',
       textColor: activeBottomTab == 'Home' ? 'black' : 'gray',
       onPress: () => {
-        console.log('kk');
+        console.log('HOME');
       },
     },
     {
@@ -22,7 +22,7 @@ const Tab = ({navigation}) => {
       iconColor: activeBottomTab == 'Browse' ? 'black' : 'gray',
       textColor: activeBottomTab == 'Browse' ? 'black' : 'gray',
       onPress: () => {
-        console.log('kk');
+        console.log('BROWSE');
       },
     },
     {
@@ -32,7 +32,7 @@ const Tab = ({navigation}) => {
       iconColor: activeBottomTab == 'Grocery' ? 'black' : 'gray',
       textColor: activeBottomTab == 'Grocery' ? 'black' : 'gray',
       onPress: () => {
-        console.log('kk');
+        console.log('GROCERY');
       },
     },
     {
@@ -42,7 +42,7 @@ const Tab = ({navigation}) => {
       iconColor: activeBottomTab == 'Orders' ? 'black' : 'gray',
       textColor: activeBottomTab == 'Orders' ? 'black' : 'gray',
       onPress: () => {
-        console.log('kk');
+        console.log('ORDERS');
       },
     },
     {
@@ -57,7 +57,6 @@ const Tab = ({navigation}) => {
     },
   ];
 
-  // console.log(activeBottomTab);
   return (
     <View
       style={{
