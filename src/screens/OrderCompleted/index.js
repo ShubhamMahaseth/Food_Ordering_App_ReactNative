@@ -8,8 +8,9 @@ import firestore from '@react-native-firebase/firestore';
 const OrderCompleted = () => {
   const [lastOrder, setLastOrder] = useState({});
   const value = useSelector(state => state.cartSlice.selectedItems.items);
-  const restaurantName = useSelector(
-    state => state.cartSlice.selectedItems.restaurantName,
+
+  const restaurant = useSelector(
+    state => state.cartSlice.selectedItems.restaurant,
   );
 
   let totalValue = 0;
@@ -37,7 +38,7 @@ const OrderCompleted = () => {
 
   return (
     <>
-      <StatusBar backgroundColor="white" />
+      <StatusBar backgroundColor="white" barStyle="dark-content" />
       <View
         style={{
           flex: 1,
@@ -59,8 +60,11 @@ const OrderCompleted = () => {
             fontWeight: 'bold',
             color: 'black',
             marginBottom: 20,
+            marginLeft: 8,
+            marginRight: 8,
           }}>
-          Your order at NAME has been placed for ₹{cartValue(totalValue, value)}
+          Your order at {restaurant} has been placed for ₹
+          {cartValue(totalValue, value)}
         </Text>
         <ScrollView contentContainerStyle={{alignItems: 'center'}}>
           <MenuItem food={lastOrder.item} hideCheckbox={true} marginLeft={10} />

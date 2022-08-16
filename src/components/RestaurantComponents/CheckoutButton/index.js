@@ -11,9 +11,6 @@ const CheckoutButton = () => {
 
   const refRBSheet = useRef();
   const value = useSelector(state => state.cartSlice.selectedItems.items);
-  const restaurantName = useSelector(
-    state => state.cartSlice.selectedItems.restaurantName,
-  );
 
   let totalValue = 0;
   function cartValue(totalValue, value) {
@@ -25,6 +22,14 @@ const CheckoutButton = () => {
 
   const orderDispatch = useSelector(
     state => state.cartSlice.selectedItems.menuItem,
+  );
+
+  const restaurantName = useSelector(
+    state => state.cartSlice.selectedItems.restaurantName,
+  );
+
+  const restaurant = useSelector(
+    state => state.cartSlice.selectedItems.restaurant,
   );
 
   const createUserInDb = () => {
@@ -92,6 +97,18 @@ const CheckoutButton = () => {
             customStyles={{
               container: {borderTopLeftRadius: 16, borderTopRightRadius: 16},
             }}>
+            <View style={{alignItems: 'center'}}>
+              <Text
+                style={{
+                  color: 'black',
+                  fontSize: 22,
+                  fontWeight: '600',
+
+                  padding: 10,
+                }}>
+                {restaurant}
+              </Text>
+            </View>
             <ScrollView
               bounces={false}
               style={{
