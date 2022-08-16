@@ -2,8 +2,6 @@ import React from 'react';
 import {View, Text, Image, StatusBar} from 'react-native';
 
 const About = props => {
-  console.log(props.image.categories);
-  // const title = 'Farmhouse Kitchen Thai Cusine';
   const reviewData = props.image.review;
   const rating = props.image.rating;
   const price = props.image.price;

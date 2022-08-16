@@ -1,9 +1,19 @@
-import React from 'react';
-import {Text, TouchableOpacity} from 'react-native';
+import React, {useState, useRef} from 'react';
+import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
 import {useSelector} from 'react-redux';
+import RBSheet from 'react-native-raw-bottom-sheet';
+import firestore from '@react-native-firebase/firestore';
+import {useNavigation} from '@react-navigation/native';
+import LottieView from 'lottie-react-native';
 
 const CheckoutButton = () => {
+  const [loading, setLoading] = useState(false);
+
+  const refRBSheet = useRef();
   const value = useSelector(state => state.cartSlice.selectedItems.items);
+  const restaurantName = useSelector(
+    state => state.cartSlice.selectedItems.restaurantName,
+  );
 
   let totalValue = 0;
   function cartValue(totalValue, value) {
@@ -12,6 +22,27 @@ const CheckoutButton = () => {
     }
     return totalValue.toFixed(2);
   }
+
+  const orderDispatch = useSelector(
+    state => state.cartSlice.selectedItems.menuItem,
+  );
+
+  const createUserInDb = () => {
+    setLoading(true);
+    const db = firestore();
+    db.collection('orders')
+      .add({
+        item: orderDispatch,
+        createdAt: firestore.FieldValue.serverTimestamp(),
+      })
+      .then(() => {
+        setTimeout(() => {
+          setLoading(false);
+          navigation.navigate('OrderCompleted');
+        }, 2500);
+      });
+  };
+  const navigation = useNavigation();
 
   return (
     <>
@@ -30,21 +61,149 @@ const CheckoutButton = () => {
             width: '76%',
             flexDirection: 'row',
           }}
-          onPress={() => console.log(value)}>
+          onPress={() => refRBSheet.current.open()}>
           <Text
             style={{
               color: 'white',
               fontWeight: '500',
               fontSize: 18,
             }}>
-            Checkout
+            View Cart
           </Text>
           <Text
-            style={{color: 'white', fontWeight: '500', fontSize: 18, left: 60}}>
-            {cartValue(totalValue, value)}
+            style={{
+              color: 'white',
+              fontWeight: '500',
+              fontSize: 18,
+              left: 60,
+            }}>
+            $ {cartValue(totalValue, value)}
           </Text>
+
+          <RBSheet
+            ref={refRBSheet}
+            closeOnDragDown={true}
+            closeOnPressMask={true}
+            dragFromTopOnly={true}
+            closeOnPressBack={true}
+            height={400}
+            customStyles={{
+              container: {borderTopLeftRadius: 16, borderTopRightRadius: 16},
+            }}>
+            <ScrollView
+              bounces={false}
+              style={{
+                contentContainer: {
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                },
+              }}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  marginBottom: 6,
+                }}>
+                <View>
+                  {restaurantName.map((item, index) => (
+                    <Text
+                      style={{
+                        color: 'black',
+                        fontSize: 18,
+                        fontWeight: '500',
+                        borderBottomWidth: 2,
+                        borderBottomColor: 'gray',
+                        padding: 15,
+                      }}
+                      key={index}>
+                      {item}
+                    </Text>
+                  ))}
+                  <Text
+                    style={{
+                      color: 'green',
+                      fontSize: 20,
+                      fontWeight: '600',
+                      padding: 15,
+                    }}>
+                    Subtotal
+                  </Text>
+                </View>
+                <View>
+                  {value.map((item, index) => (
+                    <Text
+                      style={{
+                        color: 'black',
+                        fontSize: 18,
+                        fontWeight: '500',
+                        borderBottomWidth: 2,
+                        borderBottomColor: 'gray',
+                        padding: 15,
+                      }}
+                      key={index}>
+                      $ {item}
+                    </Text>
+                  ))}
+                  <Text
+                    style={{
+                      color: 'green',
+                      fontSize: 20,
+                      fontWeight: '600',
+                      padding: 15,
+                    }}>
+                    $ {cartValue(totalValue, value)}
+                  </Text>
+                </View>
+              </View>
+              <TouchableOpacity
+                activeOpacity={0.9}
+                style={{
+                  backgroundColor: 'black',
+                  left: '11.5%',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderRadius: 22,
+                  width: '76%',
+                  height: 49,
+                  marginBottom: 10,
+                }}
+                onPress={() => {
+                  refRBSheet.current.close(), createUserInDb();
+                }}>
+                <Text
+                  style={{
+                    color: 'white',
+                    fontWeight: '500',
+                    fontSize: 18,
+                  }}>
+                  Checkout
+                </Text>
+              </TouchableOpacity>
+            </ScrollView>
+          </RBSheet>
         </TouchableOpacity>
       ) : null}
+      {loading ? (
+        <View
+          style={{
+            backgroundColor: 'black',
+            position: 'absolute',
+            opacity: 0.6,
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: '100%',
+            width: '100%',
+          }}>
+          <LottieView
+            style={{height: 200}}
+            source={require('../../../../assets/animations/scanner.json')}
+            autoPlay
+            speed={3}
+          />
+        </View>
+      ) : (
+        <></>
+      )}
     </>
   );
 };

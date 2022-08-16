@@ -81,7 +81,7 @@ export const RestaurantItem = props => {
                 {item.name}
               </Text>
               <Text style={{color: 'black', fontWeight: '500', fontSize: 10}}>
-                30-45 . min
+                30-45 min
               </Text>
             </View>
             <Text style={{color: 'black', fontWeight: 'bold', fontSize: 14}}>

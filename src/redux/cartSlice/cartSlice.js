@@ -1,6 +1,8 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-const initialState = {selectedItems: {items: [], restaurantName: []}};
+const initialState = {
+  selectedItems: {items: [], restaurantName: [], menuItem: []},
+};
 
 const cartSlice = createSlice({
   name: 'value',
@@ -9,6 +11,7 @@ const cartSlice = createSlice({
     increment: (state, action) => {
       state.selectedItems.items.push(action.payload.price);
       state.selectedItems.restaurantName.push(action.payload.title);
+      state.selectedItems.menuItem.push(action.payload);
     },
     decrement: (state, action) => {
       const filterPrice = state.selectedItems.items.filter(
@@ -19,6 +22,10 @@ const cartSlice = createSlice({
         item => item !== action.payload.title,
       );
       state.selectedItems.restaurantName = filterData;
+      const menuData = state.selectedItems.menuItem.filter(
+        item => item.title !== action.payload.title,
+      );
+      state.selectedItems.menuItem = menuData;
     },
   },
 });

@@ -32,7 +32,8 @@ export const Home = ({navigation}) => {
             business?.transactions?.includes(activeTab.toLowerCase()),
           ),
         ),
-      );
+      )
+      .catch(err => console.log(err));
   };
 
   useEffect(() => {
