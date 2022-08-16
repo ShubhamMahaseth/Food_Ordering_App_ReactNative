@@ -80,10 +80,11 @@ const MenuItem = ({food, hideCheckbox = false}) => {
               style={{
                 color: 'black',
                 fontWeight: '500',
-                fontSize: 15,
+                fontSize: 18,
                 marginTop: 5,
+                fontWeight: '500',
               }}>
-              ₹ {item.price}
+              ₹{item.price}
             </Text>
           </View>
           {hideCheckbox ? null : (
