@@ -19,7 +19,11 @@ const About = props => {
 
   return (
     <>
-      <StatusBar backgroundColor={'transparent'} translucent={true} />
+      <StatusBar
+        backgroundColor={'transparent'}
+        translucent={true}
+        barStyle="default"
+      />
       <View
         style={{
           justifyContent: 'flex-start',

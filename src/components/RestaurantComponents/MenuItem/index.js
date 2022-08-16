@@ -32,7 +32,7 @@ const MenuItem = ({food, hideCheckbox = false}) => {
       {food?.map((item, index) => (
         <View
           style={{
-            borderTopWidth: 0.2,
+            borderTopWidth: 0.3,
             borderColor: 'gray',
 
             backgroundColor: 'white',
@@ -83,7 +83,7 @@ const MenuItem = ({food, hideCheckbox = false}) => {
                 fontSize: 15,
                 marginTop: 5,
               }}>
-              ${item.price}
+              ₹ {item.price}
             </Text>
           </View>
           {hideCheckbox ? null : (

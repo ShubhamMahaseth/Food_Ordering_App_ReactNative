@@ -47,38 +47,40 @@ const CheckoutButton = () => {
   return (
     <>
       {value.length > 0 ? (
-        <TouchableOpacity
-          activeOpacity={0.9}
-          style={{
-            position: 'absolute',
-            backgroundColor: 'black',
-            left: 50,
-            height: 50,
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderRadius: 22,
-            bottom: 38,
-            width: '76%',
-            flexDirection: 'row',
-          }}
-          onPress={() => refRBSheet.current.open()}>
-          <Text
+        <View style={{alignItems: 'center'}}>
+          <TouchableOpacity
+            activeOpacity={0.9}
             style={{
-              color: 'white',
-              fontWeight: '500',
-              fontSize: 18,
-            }}>
-            View Cart
-          </Text>
-          <Text
-            style={{
-              color: 'white',
-              fontWeight: '500',
-              fontSize: 18,
-              left: 60,
-            }}>
-            $ {cartValue(totalValue, value)}
-          </Text>
+              position: 'absolute',
+              backgroundColor: 'black',
+              // left: 50,
+              height: 50,
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: 22,
+              bottom: 38,
+              width: '76%',
+              flexDirection: 'row',
+            }}
+            onPress={() => refRBSheet.current.open()}>
+            <Text
+              style={{
+                color: 'white',
+                fontWeight: '500',
+                fontSize: 18,
+              }}>
+              View Cart
+            </Text>
+            <Text
+              style={{
+                color: 'white',
+                fontWeight: '500',
+                fontSize: 18,
+                left: 56,
+              }}>
+              ₹ {cartValue(totalValue, value)}
+            </Text>
+          </TouchableOpacity>
 
           <RBSheet
             ref={refRBSheet}
@@ -141,7 +143,7 @@ const CheckoutButton = () => {
                         padding: 15,
                       }}
                       key={index}>
-                      $ {item}
+                      ₹ {item}
                     </Text>
                   ))}
                   <Text
@@ -151,7 +153,7 @@ const CheckoutButton = () => {
                       fontWeight: '600',
                       padding: 15,
                     }}>
-                    $ {cartValue(totalValue, value)}
+                    ₹ {cartValue(totalValue, value)}
                   </Text>
                 </View>
               </View>
@@ -181,7 +183,7 @@ const CheckoutButton = () => {
               </TouchableOpacity>
             </ScrollView>
           </RBSheet>
-        </TouchableOpacity>
+        </View>
       ) : null}
       {loading ? (
         <View

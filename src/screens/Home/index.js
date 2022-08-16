@@ -49,7 +49,11 @@ export const Home = ({navigation}) => {
 
   return (
     <>
-      <StatusBar backgroundColor="white" currentHeight />
+      <StatusBar
+        backgroundColor="white"
+        currentHeight
+        barStyle="dark-content"
+      />
       <View style={{flex: 1, backgroundColor: 'white'}}>
         <Animated.View
           style={{
@@ -63,6 +67,7 @@ export const Home = ({navigation}) => {
             backgroundColor: 'white',
             paddingTop: 12,
             alignItems: 'center',
+            backgroundColor: 'white',
           }}>
           <HeaderTabs activeTab={activeTab} setActiveTab={setActiveTab} />
           <SearchBox cityHandler={setCity} />

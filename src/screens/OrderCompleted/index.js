@@ -60,12 +60,16 @@ const OrderCompleted = () => {
             color: 'black',
             marginBottom: 20,
           }}>
-          Your order at NAME has been placed for ${cartValue(totalValue, value)}
+          Your order at NAME has been placed for ₹{cartValue(totalValue, value)}
         </Text>
-        <ScrollView>
+        <ScrollView contentContainerStyle={{alignItems: 'center'}}>
           <MenuItem food={lastOrder.item} hideCheckbox={true} marginLeft={10} />
           <LottieView
-            style={{height: 200, alignSelf: 'center', marginBottom: 30}}
+            style={{
+              height: 200,
+              alignSelf: 'center',
+              marginBottom: 30,
+            }}
             source={require('../../../assets/animations/cooking.json')}
             autoPlay
             speed={0.5}
