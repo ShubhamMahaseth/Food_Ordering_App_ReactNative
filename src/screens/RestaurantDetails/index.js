@@ -1,11 +1,18 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import MenuItem from '../../components/RestaurantComponents/MenuItem';
 import About from '../../components/RestaurantComponents/About';
 import CheckoutButton from '../../components/RestaurantComponents/CheckoutButton';
 
 const RestaurantDetails = navigation => {
   const food = [
+    {
+      title: 'Soup',
+      description: 'With butter lettuce, tomato and sauce bechamel',
+      price: 80.5,
+      image:
+        'https://images.unsplash.com/photo-1578861256505-d3be7cb037d3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+    },
     {
       title: 'Lasagna',
       description: 'With butter lettuce, tomato and sauce bechamel',
@@ -40,42 +47,35 @@ const RestaurantDetails = navigation => {
       description: 'With butter lettuce, tomato and sauce bechamel',
       price: 390,
       image:
-        'https://thestayathomechef.com/wp-content/uploads/2017/08/Most-Amazing-Lasagna-2-e1574792735811.jpg',
+        'https://image.shutterstock.com/image-photo/paneer-tikka-600w-623226842.jpg',
     },
     {
-      title: 'Mushroom',
+      title: 'Mushroom Masala',
       description: 'With butter lettuce, tomato and sauce bechamel',
       price: 245,
       image:
-        'https://thestayathomechef.com/wp-content/uploads/2017/08/Most-Amazing-Lasagna-2-e1574792735811.jpg',
+        'https://image.shutterstock.com/image-photo/indian-mushroom-masala-curry-naan-600w-771724966.jpg',
     },
     {
       title: 'Crispy Chilli Baby Corn',
       description: 'With butter lettuce, tomato and sauce bechamel',
       price: 285,
       image:
-        'https://thestayathomechef.com/wp-content/uploads/2017/08/Most-Amazing-Lasagna-2-e1574792735811.jpg',
+        'https://image.shutterstock.com/image-photo/delicious-snack-fried-baby-corn-600w-1759277153.jpg',
     },
     {
       title: 'Dosa',
       description: 'With butter lettuce, tomato and sauce bechamel',
       price: 120,
       image:
-        'https://thestayathomechef.com/wp-content/uploads/2017/08/Most-Amazing-Lasagna-2-e1574792735811.jpg',
+        'https://media.istockphoto.com/id/1205482290/photo/masala-dosa-on-banana-leaf-with-both-sambar-and-coconut-chutney-south-indian-vegetarian-snack.webp?s=612x612&w=is&k=20&c=Ddwd3-fDD66wcNozbLtKrp6u2XfeWrGbp6e-uFj83IU=',
     },
     {
-      title: 'Idli',
+      title: 'Idly',
       description: 'With butter lettuce, tomato and sauce bechamel',
       price: 130.65,
       image:
-        'https://thestayathomechef.com/wp-content/uploads/2017/08/Most-Amazing-Lasagna-2-e1574792735811.jpg',
-    },
-    {
-      title: 'Soup',
-      description: 'With butter lettuce, tomato and sauce bechamel',
-      price: 80.5,
-      image:
-        'https://thestayathomechef.com/wp-content/uploads/2017/08/Most-Amazing-Lasagna-2-e1574792735811.jpg',
+        'https://media.istockphoto.com/id/1024549286/photo/idly-sambar-or-idli-with-sambhar-and-green-red-chutney-popular-south-indian-breakfast.webp?s=612x612&w=is&k=20&c=A5rG0x0Ept4IvaMcJevvEBKwgeF1pFl4S2pO3ioBmP0=',
     },
   ];
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Image, ScrollView, TouchableOpacity} from 'react-native';
+import {View, Text, Image, ScrollView} from 'react-native';
 import {CheckBox} from 'react-native-elements';
 import {increment, decrement} from '../../../redux/cartSlice/cartSlice';
 import {useDispatch, useSelector} from 'react-redux';
@@ -84,7 +84,7 @@ const MenuItem = ({food, hideCheckbox = false}) => {
                 marginTop: 5,
                 fontWeight: '500',
               }}>
-              ₹{item.price}
+              ₹ {item.price}
             </Text>
           </View>
           {hideCheckbox ? null : (

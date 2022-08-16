@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, Image} from 'react-native';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
+import {useSelector} from 'react-redux';
 
 export const restaurants = [
   {
@@ -48,16 +49,20 @@ export const RestaurantItem = props => {
             borderRadius: 10,
             backgroundColor: 'white',
           }}
-          onPress={() =>
-            props.navigation.navigate('RestaurantDetails', {
-              image_URL: item.image_url,
-              name: item.name,
-              review: item.review_count,
-              rating: item.rating,
-              price: item.price,
-              categories: item.categories,
-            })
-          }>
+          onPress={() => {
+            props.navigation.navigate(
+              'RestaurantDetails',
+              {
+                image_URL: item.image_url,
+                name: item.name,
+                review: item.review_count,
+                rating: item.rating,
+                price: item.price,
+                categories: item.categories,
+              },
+              console.log(item.name),
+            );
+          }}>
           <Image
             style={{
               width: '100%',
