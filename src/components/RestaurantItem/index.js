@@ -38,7 +38,7 @@ export const RestaurantItem = props => {
   const dispatch = useDispatch();
 
   return (
-    <View style={{marginTop: 178}}>
+    <View style={{marginTop: 186}}>
       {props.restaurantData?.map((item, index) => (
         <TouchableOpacity
           activeOpacity={0.8}
@@ -81,6 +81,7 @@ export const RestaurantItem = props => {
               flexDirection: 'row',
               alignItems: 'center',
               justifyContent: 'space-between',
+              marginTop: 4,
               paddingLeft: 10,
               paddingRight: 20,
             }}>
@@ -92,9 +93,19 @@ export const RestaurantItem = props => {
                 30-45 min
               </Text>
             </View>
-            <Text style={{color: 'black', fontWeight: 'bold', fontSize: 14}}>
-              {item.rating}
-            </Text>
+            <View
+              style={{
+                borderRadius: 8,
+                width: 40,
+                height: 22,
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: 'green',
+              }}>
+              <Text style={{color: 'white', fontWeight: '500', fontSize: 14}}>
+                {item.rating}
+              </Text>
+            </View>
           </View>
           <View
             style={{

@@ -6,7 +6,7 @@ import {SearchBar} from 'react-native-elements';
 
 const SearchBox = ({cityHandler}) => {
   const [search, setSearch] = useState('');
-  cityHandler(search);
+  cityHandler(search == '' ? 'New York' : search);
   const updateSearch = searchKey => {
     setSearch(searchKey);
   };

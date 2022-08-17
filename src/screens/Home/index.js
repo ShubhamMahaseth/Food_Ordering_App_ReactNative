@@ -1,17 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {
-  StatusBar,
-  View,
-  ScrollView,
-  Animated,
-  ActivityIndicator,
-} from 'react-native';
+import {StatusBar, View, ScrollView, Animated} from 'react-native';
 import BottomTabs from '../../components/BottomTabs';
 import Categories from '../../components/Categories';
 import HeaderTabs from '../../components/HeaderTabs';
 import {RestaurantItem, restaurants} from '../../components/RestaurantItem';
 import SearchBox from '../../components/SearchBox';
-import SplashScreen from 'react-native-splash-screen';
+import SkeletonScreen from '../../screens/SkeletonScreen';
 
 const YELP_API_KEY =
   '_IXHxAN41Esb8_kyQU98od_NWVv9JXTUaY4iRQ3lmSN-sqGSKnaktZPqVog9m8q--qDYpb7qn8to9Ha-IMkfyz4yZi_8UO_eA93di7dwGfmGqfDO2shGKne6B5-hYnYx';
@@ -20,8 +14,6 @@ export const Home = ({navigation}) => {
   const [restaurantData, setRestaurantData] = useState([]);
   const [activeTab, setActiveTab] = useState('Delivery');
   const [city, setCity] = useState('New York');
-
-  console.log(restaurantData == undefined);
 
   const getRestaurantsFromYelp = () => {
     const yelpUrl = `https://api.yelp.com/v3/businesses/search?term=restaurants&location=${city}`;
@@ -33,24 +25,17 @@ export const Home = ({navigation}) => {
       },
     };
 
-    return (
-      SplashScreen.hide(),
-      fetch(yelpUrl, apiOptions)
-        .then(res => res.json())
-        .then(json =>
-          setRestaurantData(
-            json?.businesses?.filter(business =>
-              business?.transactions?.includes(activeTab.toLowerCase()),
-            ),
+    return fetch(yelpUrl, apiOptions)
+      .then(res => res.json())
+      .then(json =>
+        setRestaurantData(
+          json?.businesses?.filter(business =>
+            business?.transactions?.includes(activeTab.toLowerCase()),
           ),
-        )
-        .catch(err => console.log(err))
-    );
+        ),
+      )
+      .catch(err => console.log(err));
   };
-
-  // useEffect(() => {
-  //   SplashScreen.hide();
-  // }, []);
 
   useEffect(() => {
     getRestaurantsFromYelp();
@@ -81,7 +66,7 @@ export const Home = ({navigation}) => {
             right: 0,
             elevation: 1000,
             zIndex: 1000,
-            backgroundColor: 'white',
+
             paddingTop: 12,
             alignItems: 'center',
             backgroundColor: 'white',
@@ -92,19 +77,25 @@ export const Home = ({navigation}) => {
           <Categories />
         </Animated.View>
 
-        <ScrollView
-          bounces={false}
-          contentContainerStyle={{
-            backgroundColor: 'white',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-          onScroll={e => scrollY.setValue(e.nativeEvent.contentOffset.y)}>
-          <RestaurantItem
-            restaurantData={restaurantData}
-            navigation={navigation}
-          />
-        </ScrollView>
+        {restaurantData == '' ? (
+          <ScrollView>
+            <SkeletonScreen />
+          </ScrollView>
+        ) : (
+          <ScrollView
+            bounces={false}
+            contentContainerStyle={{
+              backgroundColor: 'white',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+            onScroll={e => scrollY.setValue(e.nativeEvent.contentOffset.y)}>
+            <RestaurantItem
+              restaurantData={restaurantData}
+              navigation={navigation}
+            />
+          </ScrollView>
+        )}
 
         <BottomTabs navigation={navigation} />
       </View>
