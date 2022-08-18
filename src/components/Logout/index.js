@@ -17,9 +17,9 @@ const Logout = () => {
           backgroundColor: 'white',
         }}>
         <TouchableOpacity
-          // onPress={() => {
-          //   logout();
-          // }}
+          onPress={() => {
+            logout();
+          }}
           activeOpacity={0.7}
           style={{
             borderRadius: 8,
