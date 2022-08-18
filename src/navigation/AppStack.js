@@ -28,7 +28,7 @@ const AppStack = () => {
         <Stack.Screen
           name="LogoutScreen"
           component={LogoutScreen}
-          options={{headerShown: true}}
+          options={{headerShown: false}}
         />
         <Stack.Screen
           name="OrderCompleted"
