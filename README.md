@@ -11,7 +11,7 @@
 
 <div style="text-align: center">
 
- <div style="text-align: center">
+ <div>
  <img src="https://user-images.githubusercontent.com/77016128/188417603-7f1419cd-9125-41a5-83f8-704964f7832a.PNG" width="280">
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  <img src="https://user-images.githubusercontent.com/77016128/188417623-5824d662-8715-4957-b5b9-928bd68bfc6d.PNG" width="280">
