@@ -39,7 +39,7 @@
   <img src="https://user-images.githubusercontent.com/77016128/188417709-5ca97d38-b09b-48c7-80ae-c0813af2011c.PNG" width="290">
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <img src="https://user-images.githubusercontent.com/77016128/188417720-20a475f9-53df-4917-a7d9-5d8def312c69.PNG" width="290">
-
+  
  </div>
 
 </div>
@@ -47,7 +47,7 @@
 
 ## Download Link
 
-<a href="https://drive.google.com/file/d/1CCVwEQZuMZ5vDWLRIakwr58evuaet32o/view?usp=sharing" target="_blank">APK download link</a>
+[APK download link](https://drive.google.com/file/d/1CCVwEQZuMZ5vDWLRIakwr58evuaet32o/view?usp=sharing)
 <br>
 
 ## Running Tests
