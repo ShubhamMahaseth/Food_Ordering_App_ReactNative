@@ -52,7 +52,6 @@
 [APK download link](https://drive.google.com/file/d/1CCVwEQZuMZ5vDWLRIakwr58evuaet32o/view?usp=sharing)
 
 <br>
-
 ## Running Tests
 
 To run, run the following command
