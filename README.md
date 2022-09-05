@@ -3,8 +3,9 @@
 ## Features
 
 - user can SignUp, SignIn with validation and Logout
-- Add items to cart
-- Place order and store them
+- items can be Added to cart
+- user can search for restaurant in any country
+- successfully place order and store them
 
 ## Screenshots
 
@@ -19,7 +20,6 @@
 
 ##
 
-##
 
   <div>
  <img src="https://user-images.githubusercontent.com/77016128/188417646-40dc1c46-cdfd-4846-9859-65e37f03ff57.PNG" width="280">
@@ -33,7 +33,6 @@
 
 ##
 
-##
 
  <div>
  <img src="https://user-images.githubusercontent.com/77016128/188417684-8277443f-8d72-46b3-8128-c6c951fcb75b.PNG" width="280">
@@ -48,7 +47,6 @@
 
 ##
 
-##
 
  <div>
  <img src="https://user-images.githubusercontent.com/77016128/188417709-5ca97d38-b09b-48c7-80ae-c0813af2011c.PNG" width="280">
