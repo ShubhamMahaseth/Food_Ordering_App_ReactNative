@@ -47,7 +47,7 @@
 
 ## Download Link
 
-[APK download link](https://drive.google.com/file/d/1CCVwEQZuMZ5vDWLRIakwr58evuaet32o/view?usp=sharing)
+<a href="https://drive.google.com/file/d/1CCVwEQZuMZ5vDWLRIakwr58evuaet32o/view?usp=sharing" target="_blank">APK download link</a>
 
 <br>
 
